@@ -112,15 +112,22 @@ let player1 = new Player(x, y, 30, 'white');
 let projectiles = [];
 let enemies = [];
 let particles = [];
-
+let interval;
 function init() {
-    player1 = new Player(x, y, 30, 'white');
+    clearInterval(interval);
+    // player1 = new Player(x, y, 30, 'white');
     projectiles = [];
+    //  enemies.splice(0, enemies.lenght - 1);
     enemies = [];
+    // while (enemies.length > 0) {
+    //     enemies.pop();
+    // }
     particles = [];
     score = 0;
     scoreEl.innerHTML = score;
     scoreModal.innerHTML = score;
+
+    console.log(enemies);
 }
 
 
@@ -132,7 +139,9 @@ function init() {
 
 
 function spawnEnemies() {
-    setInterval(() => {
+    console.log('func called');
+
+    interval = setInterval(() => {
         const radius = Math.random() * (30 - 5) + 5;
 
         let x;
@@ -154,10 +163,10 @@ function spawnEnemies() {
             x: Math.cos(angle),
             y: Math.sin(angle)
         }
-
+        console.log('enemy spawned')
         enemies.push(new Enemy(x, y, radius, color, velocity));
 
-    }, 1000)
+    }, 1000);
 }
 
 let animationId;
@@ -245,6 +254,17 @@ function animate() {
 }
 
 window.addEventListener('click', (event) => {
+    const angle = Math.atan2(event.clientY - canvas.height / 2, event.clientX - canvas.width / 2);
+    const velocity = {
+        x: Math.cos(angle) * 5,
+        y: Math.sin(angle) * 5
+    }
+
+    //console.log(angle);
+    projectiles.push(new Projectile(canvas.width / 2, canvas.height / 2, 5, 'white', velocity))
+    //  console.log(projectiles);
+});
+window.addEventListener('touchstart', (event) => {
     const angle = Math.atan2(event.clientY - canvas.height / 2, event.clientX - canvas.width / 2);
     const velocity = {
         x: Math.cos(angle) * 5,
