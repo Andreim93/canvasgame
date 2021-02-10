@@ -267,10 +267,10 @@ window.addEventListener('click', (event) => {
 });
 document.querySelector('canvas').addEventListener('touchstart', (event) => {
     player1.radius += 5;
-    const angle = Math.atan2(event.touches.clientY - canvas.height / 2, event.touches.clientX - canvas.width / 2);
+    const angle = Math.atan2(event.touches[0].clientY - canvas.height / 2, event.touches[0].clientX - canvas.width / 2);
     const velocity = {
-        x: 1,// Math.cos(angle) * 5,
-        y: 1//Math.sin(angle) * 5
+        x: Math.cos(angle) * 5,
+        y: Math.sin(angle) * 5
     }
 
     //console.log(angle);
