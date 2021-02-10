@@ -108,7 +108,7 @@ class Particle {
 const x = canvas.width / 2;
 const y = canvas.height / 2;
 
-let player1 = new Player(x, y, 30, 'white');
+let player1 = new Player(x, y, 15, 'white');
 let projectiles = [];
 let enemies = [];
 let particles = [];
@@ -254,7 +254,7 @@ function animate() {
 }
 
 window.addEventListener('click', (event) => {
-    player1.radius += 5;
+    // player1.radius += 5;
     const angle = Math.atan2(event.clientY - canvas.height / 2, event.clientX - canvas.width / 2);
     const velocity = {
         x: Math.cos(angle) * 5,
