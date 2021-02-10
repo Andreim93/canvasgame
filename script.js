@@ -264,7 +264,7 @@ window.addEventListener('click', (event) => {
     projectiles.push(new Projectile(canvas.width / 2, canvas.height / 2, 5, 'white', velocity))
     //  console.log(projectiles);
 });
-ctx.addEventListener('touchstart', (event) => {
+document.querySelector('canvas').addEventListener('touchstart', (event) => {
     const angle = Math.atan2(event.clientY - canvas.height / 2, event.clientX - canvas.width / 2);
     const velocity = {
         x: Math.cos(angle) * 5,
