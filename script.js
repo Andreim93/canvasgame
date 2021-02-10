@@ -254,6 +254,7 @@ function animate() {
 }
 
 window.addEventListener('click', (event) => {
+    player1.radius += 5;
     const angle = Math.atan2(event.clientY - canvas.height / 2, event.clientX - canvas.width / 2);
     const velocity = {
         x: Math.cos(angle) * 5,
@@ -265,6 +266,7 @@ window.addEventListener('click', (event) => {
     //  console.log(projectiles);
 });
 document.querySelector('canvas').addEventListener('touchstart', (event) => {
+    player1.radius += 5;
     const angle = Math.atan2(event.clientY - canvas.height / 2, event.clientX - canvas.width / 2);
     const velocity = {
         x: Math.cos(angle) * 5,
